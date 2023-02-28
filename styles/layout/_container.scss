@@ -1,0 +1,25 @@
+@use "../abstract" as var;
+
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+@include var.tablet-size {
+
+  .container {
+    max-width: var.$tablet-width;
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+}
+
+@include var.desktop-size {
+
+  .container {
+    max-width: var.$desktop-width;
+  }
+}

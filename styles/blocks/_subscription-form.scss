@@ -1,0 +1,14 @@
+@use "../abstract" as var;
+
+.subscription-form__btn {
+  position: absolute;
+  right: 0;
+  top: 35px;
+
+  padding: 0;
+
+  color: var.$brand-cadet-blue;
+
+  border: none;
+  z-index: 1;
+}

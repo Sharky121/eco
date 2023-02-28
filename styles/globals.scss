@@ -1,0 +1,41 @@
+// BASE
+@use 'fonts';
+@use 'base';
+@use "helpers";
+
+// LAYOUT
+@use "layout/container";
+@use "layout/index-page";
+@use "layout/page";
+@use "layout/header";
+@use "layout/footer";
+
+// BLOCKS
+@use "blocks/breadcrumbs";
+@use "blocks/buttons";
+@use "blocks/catalog-item";
+@use "blocks/catalog";
+@use "blocks/checkbox";
+@use "blocks/contact-page";
+@use "blocks/feedback-form";
+@use "blocks/forms";
+@use "blocks/map";
+@use "blocks/product-form";
+@use "blocks/product-form-field";
+@use "blocks/product";
+
+@use "blocks/subscription-form-field";
+@use "blocks/subscription-form";
+
+// SECTIONS
+@use "sections/section";
+@use "sections/welcome-screen";
+@use "sections/buy-screen";
+@use "sections/production-screen";
+@use "sections/production-item";
+@use "sections/about-screen";
+@use "sections/features-item";
+@use "sections/features-screen";
+@use "sections/feedback-screen";
+@use "sections/contacts-screen-item";
+@use "sections/contacts-screen";

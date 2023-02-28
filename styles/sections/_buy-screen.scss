@@ -1,0 +1,64 @@
+@use "../abstract" as var;
+
+.buy-screen {
+  background-color: var.$brand-blue-light;
+}
+
+.buy-screen__container {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.buy-screen__title {
+  margin-top: 0;
+  margin-bottom: 10px;
+
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.buy-screen__subtitle {
+  margin: 0;
+}
+
+@include var.desktop-size {
+
+  .buy-screen__container {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    padding-left: 100px;
+
+    text-align: left;
+  }
+
+  .buy-screen__wrapper {
+    position: relative;
+
+    padding-left: 215px;
+
+    &::before {
+      content: '';
+
+      position: absolute;
+      left: 0;
+      top: 50%;
+
+      width: 176px;
+      height: 176px;
+      margin-top: -86px;
+
+      background-image: url("../../public/images/buy.png");
+
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  }
+
+  .buy-screen__title {
+    font-size: 38px;
+    text-align: left;
+  }
+}

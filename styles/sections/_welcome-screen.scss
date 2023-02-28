@@ -1,0 +1,87 @@
+@use "../abstract" as var;
+
+.welcome-screen {
+  position: relative;
+
+  margin-top: -60px;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: var.$brand-black;
+
+  background-image: url('../../public/images/main-bg.jpg');
+
+  color: var.$brand-white;
+
+  z-index: -1;
+}
+
+.welcome-screen__container {
+  padding-top: 140px;
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+.welcome-screen__title {
+  margin: 0;
+
+  font-size: 48px;
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.welcome-screen__subtitle {
+  margin: 0;
+
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.welcome-screen__note {
+  margin-top: 60px;
+  margin-bottom: 0;
+
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 300;
+}
+
+.welcome-screen__address {
+  margin: 0;
+}
+
+@include var.desktop-size {
+
+  .welcome-screen {
+    margin-top: -86px;
+  }
+
+  .welcome-screen__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 600px;
+    padding-left: 100px;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    text-align: left;
+  }
+
+  .welcome-screen__title {
+    font-size: 100px;
+  }
+
+  .welcome-screen__subtitle {
+    font-size: 30px;
+  }
+
+  .welcome-screen__note {
+    margin-top: 40px;
+
+    font-size: 16px;
+  }
+}

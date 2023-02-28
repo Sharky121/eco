@@ -1,0 +1,128 @@
+@use "../../abstract" as var;
+
+.mobile-nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  width: 300px;
+  height: 100%;
+
+  background-color: var.$brand-white;
+
+  z-index: 9999;
+  transform: translateX(-105%);
+  transition: transform 0.5s;
+  backface-visibility: hidden;
+  will-change: transform;
+
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),
+              0 3px 1px -2px rgba(0,0,0,0.12),
+              0 1px 5px 0 rgba(0,0,0,0.2);
+}
+
+.mobile-nav--isOpen {
+  transform: translateX(0);
+  transition: transform 0.5s;
+}
+
+.mobile-nav__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 100%;
+  padding: 25px 15px;
+
+  text-align: center;
+}
+
+.mobile-nav__close-menu {
+  @extend %btn-reset;
+
+  position: relative;
+
+  align-self: flex-start;
+  padding-left: 40px;
+
+  font-size: 10px;
+  font-weight: 700;
+  color: var.$brand-black;
+  text-transform: uppercase;
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    left: 0;
+    top: 50%;
+
+    display: block;
+    width: 34px;
+    height: 34px;
+    margin-top: -17px;
+
+    background-image: url("../../../public/images/ico-close.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  &:hover,
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+.mobile-nav__list {
+  @extend %list-reset;
+
+  margin-top: 40px;
+  text-align: center;
+}
+
+.mobile-nav__item {
+  margin-bottom: 15px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.mobile-nav__link {
+  color: var.$brand-black;
+
+  transition: background-color 1s;
+
+  &:hover,
+  &:active {
+    opacity: 0.7;
+  }
+
+  &:focus {
+    outline-style: solid;
+    outline-color: transparent;
+
+    transition: none;
+  }
+}
+
+.mobile-nav__phone {
+  margin-top: auto;
+
+  font-size: 24px;
+  font-weight: 700;
+  color: var.$brand-black;
+
+  span {
+    color: var.$brand-dusty-gray;
+  }
+}
+
+.mobile-nav__address {
+  display: inline-block;
+
+  font-size: 14px;
+  line-height: 1.2;
+  color: var.$brand-black;
+}

@@ -1,0 +1,63 @@
+@use "../../abstract" as var;
+
+.page-header,
+.page-header__container {
+  height: 60px;
+}
+
+.page-header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.page-header--white {
+  background-color: #ffffff;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+}
+
+.page-header--white .main-nav__link,
+.page-header--white .header-contacts__phone {
+  color: #212121;
+}
+
+.page-header--white .header-contacts__phone span {
+  color: #545454;
+}
+
+@include var.tablet-size {
+
+  .page-header__hamburger {
+    order: 1;
+    margin-right: 30px;
+  }
+
+  .page-header__logo {
+    order: 2;
+  }
+
+  .page-header__contacts {
+    order: 3;
+    margin-left: auto;
+  }
+}
+
+@include var.desktop-size {
+
+  .page-header,
+  .page-header__container {
+    height: 86px;
+  }
+
+  .page-header__logo {
+    order: 1;
+  }
+
+  .page-header__main-nav {
+    order: 2;
+  }
+
+  .page-header__contacts {
+    margin-left: 0;
+  }
+}

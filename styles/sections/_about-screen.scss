@@ -1,0 +1,60 @@
+@use "../abstract" as var;
+
+.about-screen__img {
+  display: none;
+}
+
+.about-screen__text p {
+  margin-top: 0;
+  margin-bottom: 15px;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+@include var.tablet-size {
+
+  .about-screen__img {
+    position: relative;
+
+    display: block;
+    width: 100%;
+    height: 465px;
+    margin-bottom: 20px;
+
+    border-radius: 10px;
+    overflow: hidden;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
+
+@include var.desktop-size {
+
+  .about-screen__container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .about-screen__img {
+    width: 410px;
+    height: 430px;
+    margin-bottom: 0;
+    margin-right: 50px;
+
+    img {
+      max-width: none;
+      object-fit: cover;
+    }
+  }
+
+  .about-screen__text {
+    width: calc(100% - 460px);
+    flex-grow: 2;
+  }
+}

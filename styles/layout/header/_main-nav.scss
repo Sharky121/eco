@@ -1,0 +1,38 @@
+@use "../../abstract" as var;
+
+.main-nav {
+  display: none;
+}
+
+.main-nav__list {
+  @extend %list-reset;
+}
+
+@include var.desktop-size {
+
+  .main-nav {
+    display: block;
+  }
+
+  .main-nav__list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .main-nav__item {
+    margin-right: 60px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .main-nav__link {
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var.$brand-white;
+  }
+}

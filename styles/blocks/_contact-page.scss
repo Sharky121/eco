@@ -1,0 +1,22 @@
+@use "../abstract" as var;
+
+.contact-page__raw {
+  margin-bottom: 20px;
+
+  p {
+    margin-top: 0;
+    margin-bottom: 10px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    color: var.$brand-cadet-blue;
+  }
+}
+
+.contact-page__container {
+  margin-bottom: 40px;
+}

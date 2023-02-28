@@ -1,0 +1,38 @@
+@use "../abstract" as var;
+
+.form-field {
+  position: relative;
+}
+
+.form-field__label {
+  display: block;
+  margin-bottom: 10px;
+
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.form-field__input {
+  @extend %form-field;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    font-family: Montserrat, sans-serif;
+    font-size: 12px;
+    color: var.$brand-cod-gray;
+    text-transform: uppercase;
+  }
+}
+
+.form-field__textarea {
+  @extend %form-field;
+
+  resize: none;
+
+  &:focus {
+    outline: none;
+  }
+}

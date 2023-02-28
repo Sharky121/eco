@@ -1,0 +1,95 @@
+// CERA-PRO
+
+@font-face {
+  font-family: "Cera";
+  font-style: normal;
+  font-weight: 300;
+  src: local("CeraPro-Light"),
+       url("../public/fonts/CeraPro-Light.woff2"),
+       url("../public/fonts/CeraPro-Light.woff");
+}
+
+@font-face {
+  font-family: "Cera";
+  font-style: normal;
+  font-weight: 400;
+  src: local("CeraPro-Regular"),
+       url("../public/fonts/CeraPro-Regular.woff2"),
+       url("../public/fonts/CeraPro-Regular.woff");
+}
+
+@font-face {
+  font-family: "Cera";
+  font-style: italic;
+  font-weight: 400;
+  src: local("CeraPro-RegularItalic"),
+       url("../public/fonts/CeraPro-RegularItalic.woff2"),
+       url("../public/fonts/CeraPro-RegularItalic.woff");
+}
+
+@font-face {
+  font-family: "Cera";
+  font-style: normal;
+  font-weight: 700;
+  src: local("CeraPro-Bold"),
+       url("../public/fonts/CeraPro-Bold.woff2"),
+       url("../public/fonts/CeraPro-Bold.woff");
+}
+
+@font-face {
+  font-family: "Cera";
+  font-style: normal;
+  font-weight: 900;
+  src: local("CeraPro-Black"),
+       url("../public/fonts/CeraPro-Black.woff2"),
+       url("../public/fonts/CeraPro-Black.woff");
+}
+
+// MONTSERRAT
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Montserrat-Regular"),
+       url("../public/fonts/Montserrat-Regular.woff2"),
+       url("../public/fonts/Montserrat-Regular.woff");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Montserrat-Medium"),
+       url("../public/fonts/Montserrat-Medium.woff2"),
+       url("../public/fonts/Montserrat-Medium.woff");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  src: local("Montserrat-SemiBold"),
+       url("../public/fonts/Montserrat-SemiBold.woff2"),
+       url("../public/fonts/Montserrat-SemiBold.woff");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Montserrat-Bold"),
+       url("../public/fonts/Montserrat-Bold.woff2"),
+       url("../public/fonts/Montserrat-Bold.woff");
+}
+
+// OPEN-SANS
+
+@font-face {
+  font-family: "OpenSans";
+  font-style: normal;
+  font-weight: 400;
+  src: local("OpenSans-Regular"),
+       url("../public/fonts/OpenSans-Regular.woff2"),
+       url("../public/fonts/OpenSans-Regular.woff");
+}

@@ -1,0 +1,42 @@
+@use "../abstract" as var;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 20px;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  cursor: pointer;
+  appearance: none;
+  transition: 0.3s ease-out;
+
+  background-color: transparent;
+  border-color: transparent;
+  border-radius: 15px;
+  border-style: solid;
+}
+
+.btn--full-width {
+  width: 100%;
+}
+
+.btn--primary {
+  color: var.$brand-white;
+  background-image: linear-gradient(45deg, #9fa6c0 0%, #8fa3eb 100%);
+
+  &:hover {
+    color: var.$brand-cadet-blue;
+
+    border-color: var.$brand-cadet-blue;
+    background-image: none;
+    background-color: transparent;
+  }
+}

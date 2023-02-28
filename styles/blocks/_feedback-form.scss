@@ -1,0 +1,51 @@
+@use "../abstract" as var;
+
+.feedback-form__list {
+  @extend %list-reset;
+}
+
+.feedback-form__item {
+  margin-bottom: 10px;
+}
+
+.feedback-form__politics {
+  margin-bottom: 15px;
+}
+
+@include var.tablet-size {
+
+  .feedback-form__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .feedback-form__item {
+    width: calc((100% - 20px) / 2);
+    margin-right: 20px;
+
+    &:nth-child(2) {
+      margin-right: 0;
+    }
+
+    &:nth-child(3) {
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+}
+
+@include var.desktop-size {
+
+  .feedback-form {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .feedback-form__list {
+    width: 70%;
+    margin-right: 60px;
+  }
+}

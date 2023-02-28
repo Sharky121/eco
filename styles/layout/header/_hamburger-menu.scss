@@ -1,0 +1,57 @@
+@use "../../abstract" as var;
+
+.hamburger-menu {
+  position: relative;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 30px;
+  height: 34px;
+  padding: 5px;
+
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.hamburger-menu__line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+
+  display: block;
+  height: 3px;
+  margin-top: -1.5px;
+  width: 100%;
+
+  background-color: var.$brand-white;
+}
+
+.hamburger-menu__line:after,
+.hamburger-menu__line:before {
+  content: "";
+
+  position: absolute;
+  left: 0;
+
+  width: 100%;
+  height: 3px;
+
+  background-color: inherit
+}
+
+.hamburger-menu__line:before {
+  top: 8px;
+}
+
+.hamburger-menu__line:after {
+  top: -8px;
+}
+
+@include var.desktop-size {
+
+  .hamburger-menu {
+    display: none;
+  }
+}

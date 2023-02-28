@@ -1,0 +1,22 @@
+@use "../abstract" as var;
+
+.page__footer {
+  margin-top: 60px;
+}
+
+.page__icons {
+  display: none;
+}
+
+.page__breadcrumbs {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+@include var.desktop-size {
+
+  .page__breadcrumbs {
+    margin-top: 40px;
+    margin-bottom: 60px;
+  }
+}

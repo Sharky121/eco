@@ -1,0 +1,20 @@
+@use "../abstract" as var;
+
+.checkbox__text {
+  font-size: 12px;
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  line-height: 1;
+
+  a {
+    text-decoration: underline;
+    color: #9fa6c0;
+  }
+}
+
+@include var.tablet-size {
+
+  .checkbox__text {
+    font-size: 14px;
+  }
+}

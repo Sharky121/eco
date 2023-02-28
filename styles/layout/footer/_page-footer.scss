@@ -1,0 +1,75 @@
+@use "../../abstract" as var;
+
+.page-footer {
+  width: 100%;
+
+  background-color: var.$brand-wild-sand;
+}
+
+.page-footer__container {
+  height: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  text-align: center;
+}
+
+.page-footer__logo {
+  display: inline-block;
+  margin-bottom: 20px;
+
+  vertical-align: middle;
+
+  img {
+    vertical-align: middle;
+  }
+}
+
+.page-footer__copyright {
+  margin: 0;
+
+  font-size: 12px;
+  line-height: 1;
+}
+
+@include var.tablet-size {
+
+  .page-footer__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .page-footer__logo {
+    margin-bottom: 0;
+  }
+
+  .page-footer__copyright {
+    text-align: right;
+  }
+}
+
+@include var.desktop-size {
+
+  .page-footer__container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .page-footer__logo {
+    margin-right: 40px;
+
+    img {
+      width: 212px;
+      height: 56px;
+    }
+  }
+
+  .page-footer__copyright {
+    text-align: left;
+  }
+
+  .page-footer__form {
+    margin-left: auto;
+  }
+}

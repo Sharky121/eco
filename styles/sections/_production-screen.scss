@@ -1,0 +1,33 @@
+@use "../abstract" as var;
+
+.production-screen__list {
+  @extend %list-reset;
+}
+
+.production-screen__item {
+  margin-bottom: 20px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@include var.tablet-size {
+
+  .production-screen__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .production-screen__item {
+    width: calc((100% - 20px) / 2);
+    margin-right: 20px;
+    margin-bottom: 0;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

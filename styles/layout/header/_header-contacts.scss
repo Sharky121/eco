@@ -1,0 +1,50 @@
+@use "../../abstract" as var;
+
+.header-contacts {
+  display: none;
+}
+
+@include var.tablet-size {
+
+  .header-contacts {
+    display: block;
+
+    text-align: right;
+    font-family: "Montserrat", sans-serif;
+    line-height: 1;
+  }
+
+  .header-contacts__phone,
+  .header-contacts__callback {
+    display: block;
+
+    vertical-align: middle;
+    line-height: 1;
+  }
+
+  .header-contacts__phone {
+    font-size: 20px;
+    font-weight: 700;
+    color: var.$brand-white;
+
+    span {
+      padding-right: 5px;
+      color: var.$brand-dusty-gray;
+    }
+  }
+
+  .header-contacts__callback {
+    font-weight: 400;
+    font-size: 14px;
+    color: var.$brand-cadet-blue;
+
+    text-decoration: underline;
+  }
+}
+
+@include var.desktop-size {
+
+  .header-contacts__phone {
+    font-size: 24px;
+  }
+}

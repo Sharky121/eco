@@ -1,0 +1,17 @@
+@use "../abstract" as var;
+
+.feedback-screen__title {
+  font-size: 22px;
+  font-family: "Cera", sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+@include var.tablet-size {
+
+  .feedback-screen__title {
+    margin-bottom: 25px;
+
+    text-align: left;
+  }
+}

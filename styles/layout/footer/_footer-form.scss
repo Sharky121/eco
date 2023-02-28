@@ -1,0 +1,12 @@
+@use "../../abstract" as var;
+
+.footer-form {
+  display: none;
+}
+
+@include var.desktop-size {
+
+  .footer-form {
+    display: block;
+  }
+}

@@ -1,0 +1,75 @@
+@use "../abstract" as var;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.breadcrumbs__back {
+  position: relative;
+
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 30px;
+  margin-right: 35px;
+
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  color: var.$brand-nevada;
+  text-transform: uppercase;
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    left: 0;
+    top: 50%;
+
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin-top: -11px;
+
+    background-image: url("../../public/images/ico-back.svg");
+    background-size: cover;
+  }
+}
+
+.breadcrumbs__list {
+  @extend %list-reset;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.breadcrumbs__item {
+  margin-right: 5px;
+
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  color: var.$brand-nevada;
+
+  &:last-child {
+    font-weight: 600;
+    margin-right: 0;
+  }
+}
+
+.breadcrumbs__link {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.breadcrumbs__item + .breadcrumbs__item::before {
+  content: "/";
+
+  color: var.$brand-nevada;
+}

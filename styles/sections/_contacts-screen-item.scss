@@ -1,0 +1,19 @@
+.contacts-screen-item {
+  text-align: center;
+}
+
+.contacts-screen-item__title {
+  margin-top: 0;
+  margin-bottom: 10px;
+
+  font-family: "OpenSans", sans-serif;
+  font-weight: 400;
+  color: #9fa6c0;
+}
+
+.contacts-screen-item__phone {
+  font-size: 20px;
+  font-weight: 700;
+  color: #9fa6c0;
+  text-decoration: none;
+}

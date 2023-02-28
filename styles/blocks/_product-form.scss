@@ -1,0 +1,18 @@
+@use "../abstract" as var;
+
+.product-form__list {
+  @extend %list-reset;
+}
+
+.product-form__item {
+  margin-bottom: 15px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.product-form__btn {
+  width: 100%;
+  margin-top: 40px;
+}
