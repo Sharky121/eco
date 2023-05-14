@@ -1,17 +1,5 @@
 import Link from "next/link";
 
-export async function getStaticProps() {
-    try {
-        return {
-            props: { headerStyle: 'page-header--white' }
-        }
-    } catch {
-        return {
-            props: null
-        }
-    }
-}
-
 const Contacts = () => (
     <div className="container">
         <section className="page__breadcrumbs breadcrumbs">
