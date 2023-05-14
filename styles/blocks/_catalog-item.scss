@@ -44,7 +44,7 @@
 }
 
 .catalog-item__desc {
-  margin-top: auto;
+  margin-top: 0;
   margin-bottom: 0;
 }
 
@@ -73,15 +73,10 @@
 @include var.desktop-size {
 
   .catalog-item__wrapper {
-    min-height: 316px;
-    padding: 160px 20px 35px 40px;
+    min-height: 290px;
 
     &::before {
       left: 30px;
     }
-  }
-
-  .catalog-item__title {
-    font-size: 40px;
   }
 }

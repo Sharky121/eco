@@ -9,8 +9,8 @@ type headerStyleProps = {
 
 const Header = ({headerStyle}: headerStyleProps) => {
     const logoImage = headerStyle
-        ? '/images/logo-black.png'
-        : '/images/logo-ghost.png'
+        ? '/images/logo-green.png'
+        : '/images/logo-white.png'
 
     return (
         <header className={`page__header page-header ${headerStyle}`}>
@@ -20,6 +20,7 @@ const Header = ({headerStyle}: headerStyleProps) => {
                         src={logoImage}
                         height={40}
                         width={151}
+                        className="logo__img"
                         alt="Логотип Экопоролон"
                     />
                 </Link>

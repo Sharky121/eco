@@ -30,12 +30,12 @@
 
 .btn--primary {
   color: var.$brand-white;
-  background-image: linear-gradient(45deg, #9fa6c0 0%, #8fa3eb 100%);
+  background-color: var.$brand-malachite;
 
   &:hover {
-    color: var.$brand-cadet-blue;
+    color: var.$brand-malachite;
 
-    border-color: var.$brand-cadet-blue;
+    border-color: var.$brand-malachite;
     background-image: none;
     background-color: transparent;
   }

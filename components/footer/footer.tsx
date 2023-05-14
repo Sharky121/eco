@@ -8,7 +8,7 @@ const Footer = () => (
         <div className="page-footer__container container">
             <Link className="page-footer__logo" href="/">
                 <Image
-                    src="/images/logo-black.png"
+                    src="/images/logo-green.png"
                     height={40}
                     width={151}
                     alt="Логотип Экопоролон"

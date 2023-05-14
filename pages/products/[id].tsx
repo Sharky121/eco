@@ -1,13 +1,14 @@
 import {ProductInterface} from "@/interfaces/product.interface";
 import Image from "next/image";
+import * as process from "process";
 
 type productsProps = {
     product: ProductInterface;
 }
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async (context: { params: { id: any; }; }) => {
     const { id } = context.params;
-    const response = await fetch(`http://localhost:3000/api/products/${id}`);
+    const response = await fetch(`${process.env.API_HOST}/products/${id}`);
     const product = await response.json();
 
     return {
@@ -20,19 +21,24 @@ export const getServerSideProps = async (context) => {
 
 const Product = ({product}: productsProps) => {
     return (
-        <div className="container">
-            <h1>{product.id}</h1>
-            {product.photos.map((photo) => (
-                <li key={photo}>
-                    <Image
-                        src={photo}
-                        fill
-                        alt="экопоролон"
-                    />
-                </li>
-
-            ))}
-        </div>
+        <section className="product">
+            <div className="product__wrapper container">
+                <h2>{product.title}</h2>
+                <p className="product__desc">{product.desc}</p>
+                <ul className="product__list">
+                    {product.photos.map((photo) => (
+                        <li className="product__item" key={photo}>
+                            <Image
+                                src={photo}
+                                fill
+                                className="product__img"
+                                alt="экопоролон"
+                            />
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </section>
     )
 };
 

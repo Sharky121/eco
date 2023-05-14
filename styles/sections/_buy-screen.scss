@@ -22,6 +22,8 @@
 
 .buy-screen__subtitle {
   margin: 0;
+
+  color: var.$brand-malachite;
 }
 
 @include var.desktop-size {
