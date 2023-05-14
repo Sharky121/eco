@@ -10,7 +10,6 @@ export async function getStaticProps() {
             props: null
         }
     }
-
 }
 
 const Contacts = () => (

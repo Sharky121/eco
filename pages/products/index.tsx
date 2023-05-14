@@ -1,27 +1,19 @@
 import Link from "next/link";
 import {ProductInterface} from "@/interfaces/product.interface";
+import process from "process";
 
 type productsProps = {
     products: ProductInterface[];
 }
 
-export const getStaticProps = async () => {
-    try {
-        const response = await fetch(`${process.env.API_HOST}/products`);
-        const products = await response.json();
+export const getServerSideProps = async () => {
+    const response = await fetch(`${process.env.API_HOST}/products`);
+    const products = await response.json();
 
-        return {
-            props: {
-                products,
-                headerStyle: 'page-header--white'
-            }
-        }
-    } catch {
-        return {
-            props: {
-                products: null,
-                headerStyle: null
-            }
+    return {
+        props: {
+            products,
+            headerStyle: 'page-header--white'
         }
     }
 }
