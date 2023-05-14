@@ -3,21 +3,13 @@ import Image from 'next/image';
 import Nav from "@/components/nav/nav";
 import MobileNav from "@/components/mobile-nav/mobile-nav";
 
-type headerStyleProps = {
-    headerStyle: string;
-}
-
-const Header = ({headerStyle}: headerStyleProps) => {
-    const logoImage = headerStyle
-        ? '/images/logo-green.png'
-        : '/images/logo-white.png'
-
+const Header = () => {
     return (
-        <header className={`page__header page-header ${headerStyle}`}>
+        <header className={`page__header page-header`}>
             <div className="page-header__container container">
                 <Link className="page-header__logo logo" href="/">
                     <Image
-                        src={logoImage}
+                        src={'/images/logo-white.png'}
                         height={40}
                         width={151}
                         className="logo__img"

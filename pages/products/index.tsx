@@ -13,7 +13,6 @@ export const getServerSideProps = async () => {
     return {
         props: {
             products,
-            headerStyle: 'page-header--white'
         }
     }
 }

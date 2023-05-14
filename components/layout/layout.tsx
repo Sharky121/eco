@@ -3,20 +3,14 @@ import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
 import FeedbackScreen from "@/components/feedback-screen/feedback-screen";
 
-type ChildProps = {
-    headerStyle: string;
-};
-
 type LayoutProps = {
-    children: ReactElement<ChildProps>;
+    children: ReactElement;
 };
 
 const Layout = ({children}: LayoutProps) => {
-    const {headerStyle} = children.props;
-
     return (
         <>
-            <Header headerStyle={headerStyle}/>
+            <Header/>
             <main className="page__main index-page">
                 {children}
                 <FeedbackScreen/>

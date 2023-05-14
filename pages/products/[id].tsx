@@ -14,7 +14,6 @@ export const getServerSideProps = async (context: { params: { id: any; }; }) => 
     return {
         props: {
             product,
-            headerStyle: 'page-header--white'
         }
     }
 }
