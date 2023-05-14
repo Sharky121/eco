@@ -1,11 +1,16 @@
 import Link from "next/link";
 
-export async function getStaticProps(): Promise<{ props: { headerStyle: string } }> {
-    return {
-        props: {
-            'headerStyle': 'page-header--white'
+export async function getStaticProps(): Promise<{ props: { headerStyle: string | null } }> {
+    try {
+        return {
+            props: { headerStyle: 'page-header--white' }
+        }
+    } catch {
+        return {
+            props: { headerStyle: null }
         }
     }
+
 }
 
 const About = () => (

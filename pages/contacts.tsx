@@ -1,12 +1,16 @@
 import Link from "next/link";
-import FeedbackScreen from "@/components/feedback-screen/feedback-screen";
 
-export async function getStaticProps() {
-    return {
-        props: {
-            headerStyle: 'page-header--white'
+export async function getStaticProps(): Promise<{ props: { headerStyle: string | null } }> {
+    try {
+        return {
+            props: { headerStyle: 'page-header--white' }
+        }
+    } catch {
+        return {
+            props: { headerStyle: null }
         }
     }
+
 }
 
 const Contacts = () => (
