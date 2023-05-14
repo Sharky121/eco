@@ -6,13 +6,22 @@ type productsProps = {
 }
 
 export const getStaticProps = async () => {
-    const response = await fetch('http://localhost:3000/api/products');
-    const products = await response.json();
+    try {
+        const response = await fetch(`${process.env.API_HOST}/products`);
+        const products = await response.json();
 
-    return {
-        props: {
-            products,
-            headerStyle: 'page-header--white'
+        return {
+            props: {
+                products,
+                headerStyle: 'page-header--white'
+            }
+        }
+    } catch {
+        return {
+            props: {
+                products: null,
+                headerStyle: null
+            }
         }
     }
 }

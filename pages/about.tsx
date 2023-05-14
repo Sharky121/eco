@@ -1,13 +1,13 @@
 import Link from "next/link";
 
-export async function getStaticProps(): Promise<{ props: { headerStyle: string | null } }> {
+export async function getStaticProps() {
     try {
         return {
             props: { headerStyle: 'page-header--white' }
         }
     } catch {
         return {
-            props: { headerStyle: null }
+            props: null
         }
     }
 
