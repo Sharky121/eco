@@ -1,21 +1,19 @@
-import React, {ReactElement} from "react";
+import {ReactNode} from "react";
 import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
 import FeedbackScreen from "@/components/feedback-screen/feedback-screen";
 
 type LayoutProps = {
-    children: ReactElement;
+    children: ReactNode;
 };
 
-const Layout = ({children}: LayoutProps) => {
+const Layout = ({ children }: LayoutProps) => {
     return (
         <>
-            <Header/>
-            <main className="page__main index-page">
+            <main className="page__main">
                 {children}
                 <FeedbackScreen/>
             </main>
-            <Footer/>
         </>
     )
 };
