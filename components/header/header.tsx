@@ -4,7 +4,7 @@ import Nav from "@/components/nav/nav";
 import MobileNav from "@/components/mobile-nav/mobile-nav";
 
 type headerStyleProps = {
-    headerStyle: string;
+    headerStyle?: string;
 }
 
 const Header = ({headerStyle}: headerStyleProps) => {
