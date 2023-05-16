@@ -1,10 +1,10 @@
 import {useState} from "react";
 
 const FeedbackScreen = () => {
-    const [text, setText] = useState('Hello World');
+    const [text, setText] = useState('Ваше сообщение');
 
     return (
-        <section className="section feedback-screen">
+        <section className="section page__feedback-screen feedback-screen">
             <div className="feedback-screen__container container">
                 <h2 className="feedback-screen__title section__title">Обратная связь:</h2>
                 <form className="feedback-screen__form form feedback-form" id="feedback" action="sendForm" method="post">

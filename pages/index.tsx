@@ -4,18 +4,24 @@ import ProductionScreen from "@/components/production-screen/production-screen";
 import AboutScreen from "@/components/about-screen/about-screen";
 import FeaturesScreen from "@/components/features-screen/features-screen";
 import ContactsScreen from "@/components/contacts-screen/contacts-screen";
+import Header from "@/components/header/header";
 import FeedbackScreen from "@/components/feedback-screen/feedback-screen";
+import Footer from "@/components/footer/footer";
 
 export default function Home() {
   return (
       <>
-          <WelcomeScreen/>
-          <BuyScreen/>
-          <ProductionScreen/>
-          <AboutScreen/>
-          <FeaturesScreen/>
-          <ContactsScreen/>
-          <FeedbackScreen/>
+          <Header />
+          <main className="page__main">
+              <WelcomeScreen/>
+              <BuyScreen/>
+              <ProductionScreen/>
+              <AboutScreen/>
+              <FeaturesScreen/>
+              <ContactsScreen/>
+              <FeedbackScreen/>
+          </main>
+          <Footer/>
       </>
   )
 }

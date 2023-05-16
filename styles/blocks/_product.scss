@@ -1,75 +1,30 @@
 @use "../abstract" as var;
 
-.product__wrapper {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-}
-
-.product__title {
-  margin-top: 0;
-  margin-bottom: 15px;
-
-  font-size: 24px;
-  line-height: 1;
-  font-family: "Montserrat", sans-serif;
-}
-
-.product__image {
-  display: none;
-}
-
-.product__description {
-  margin-top: 0;
-  margin-bottom: 20px;
-
-  font-size: 14px;
-  font-family: "Montserrat", sans-serif;
-
-  b {
-    color: var.$brand-nevada;
-  }
-
-  &:last-of-type {
-    margin-bottom: 0;
-  }
-}
-
-.product__form {
-  margin-top: 20px;
+.product__list {
+  @extend %list-reset;
 }
 
 @include var.desktop-size {
 
-  .product__image {
+  .product__list {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .product__item {
     position: relative;
 
-    display: block;
-    width: 400px;
-    margin-right: 60px;
-    aspect-ratio: 1 / 1;
-
+    width: calc((100% - 20px * 2) / 3);
+    height: 300px;
     overflow: hidden;
-    border-radius: 10px;
-
-    img {
-      max-width: 100%;
-      height: auto;
-    }
   }
 
-  .product__form {
-    margin-top: 40px;
-  }
-
-  .product__title {
-    margin-bottom: 30px;
-
-    font-size: 46px;
-  }
-
-  .product__content {
-    width: calc((100% - 60px) / 2);
+  .product__img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
   }
 }
