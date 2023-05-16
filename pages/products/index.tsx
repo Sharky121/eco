@@ -10,7 +10,7 @@ type productsProps = {
 }
 
 export const getServerSideProps = async () => {
-    const response = await fetch(`${process.env.API_HOST}/products`);
+    const response = await fetch(`${process.env.API_HOST}/api/products`);
     const products = await response.json();
 
     return {
