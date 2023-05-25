@@ -10,13 +10,22 @@ type productsProps = {
 }
 
 export const getServerSideProps = async () => {
-    const response = await fetch(`${process.env.API_HOST}/api/products`);
-    const products = await response.json();
+    try {
+        const response = await fetch(`${process.env.API_HOST}/api/products`);
 
-    return {
-        props: {
-            products,
+        if (!response.ok) {
+            throw new Error('Ошибка ' + response);
         }
+
+        const products = await response.json();
+
+        return {
+            props: {
+                products,
+            }
+        }
+    } catch (error) {
+        console.error(error);
     }
 }
 
