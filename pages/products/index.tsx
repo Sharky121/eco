@@ -52,7 +52,6 @@ const Products = () => {
             </main>
             <Footer/>
         </>
-
     )
 };
 
