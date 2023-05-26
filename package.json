@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fancyapps/ui": "^5.0.19",
     "@pbe/react-yandex-maps": "^1.2.4",
     "@types/node": "18.14.1",
     "@types/react": "18.0.28",

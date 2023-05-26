@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from 'next/image';
 import {products} from "@/data";
+import Fancybox from "@/components/fancybox/fancybox";
 import Header from "@/components/header/header";
 import FeedbackScreen from "@/components/feedback-screen/feedback-screen";
 import Footer from "@/components/footer/footer";
@@ -38,7 +39,17 @@ const Product = ({ productId }: ProductType) => {
                             {
                                 product.photos.map((photo, index) => (
                                     <li className="product__item" key={index}>
-                                        <Image fill className="product__img" alt="" src={photo}/>
+                                        <Fancybox
+                                            options={{
+                                                Carousel: {
+                                                    infinite: false,
+                                                },
+                                            }}
+                                         delegate="">
+                                            <a className='product__link' data-fancybox="gallery" href={photo}>
+                                                <Image fill className="product__img" alt="" src={photo} />
+                                            </a>
+                                        </Fancybox>
                                     </li>
                                 ))
                             }
