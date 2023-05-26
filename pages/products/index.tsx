@@ -1,35 +1,22 @@
 import Link from "next/link";
 import {ProductInterface} from "@/interfaces/product.interface";
-import process from "process";
+import {products} from "@/data";
 import Header from "@/components/header/header";
 import FeedbackScreen from "@/components/feedback-screen/feedback-screen";
 import Footer from "@/components/footer/footer";
 
+type Product = {
+    id: number;
+    title: string;
+    desc: string;
+    photos: string[];
+}
+
 type productsProps = {
-    products: ProductInterface[];
+    products: Product[];
 }
 
-export const getServerSideProps = async () => {
-    try {
-        const response = await fetch(`${process.env.API_HOST}/api/products`);
-
-        if (!response.ok) {
-            throw new Error('Ошибка ' + response);
-        }
-
-        const products = await response.json();
-
-        return {
-            props: {
-                products,
-            }
-        }
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-const Products = ({products}: productsProps) => {
+const Products = () => {
     return (
         <>
             <Header headerStyle="page-header--white"/>
