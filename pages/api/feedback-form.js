@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 
-export default function handler(req, res) {
+export default async (req, res) => {
   const body = req.body;
 
   console.log('body: ', body);
@@ -25,17 +25,30 @@ export default function handler(req, res) {
       <p>Сообщение: ${body.message} </p>`
   };
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log('Email sent: ' + info.response);
-    }
+  await new Promise((resolve, reject) => {
+    transporter.verify(function (error, success) {
+      if (error) {
+        console.log(error);
+        reject(error);
+      } else {
+        console.log("Server is ready to take our messages");
+        resolve(success);
+      }
+    });
   });
 
-  if (!body.name || !body.email || !body.message) {
-    return res.status(400).json({ data: 'Произошла ошибка' });
-  }
+  await new Promise((resolve, reject) => {
+    // send mail
+    transporter.sendMail(mailOptions, (err, info) => {
+      if (err) {
+        console.error(err);
+        reject(err);
+      } else {
+        console.log(info);
+        resolve(info);
+      }
+    });
+  });
 
-  res.status(200).json({ data: `Ваше сообщение отправлено!`});
+  res.status(200).json({ status: "OK" });
 }
