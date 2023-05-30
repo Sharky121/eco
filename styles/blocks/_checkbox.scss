@@ -1,20 +1,89 @@
 @use "../abstract" as var;
 
-.checkbox__text {
-  font-size: 12px;
-  font-family: Montserrat, sans-serif;
-  font-weight: 500;
-  line-height: 1;
+.checkbox {
+  display: inline-block;
+
+  font-size: inherit;
+  text-align: left;
+  vertical-align: middle;
+
+  cursor: pointer;
 
   a {
-    text-decoration: underline;
     color: var.$brand-malachite;
   }
 }
 
-@include var.tablet-size {
+.checkbox__input {
+  position: absolute;
+  opacity: 0;
 
-  .checkbox__text {
-    font-size: 14px;
+  pointer-events: none;
+
+  appearance: none;
+
+  outline: none;
+}
+
+.checkbox__text {
+  user-select: none;
+
+  position: relative;
+
+  padding-left: 30px;
+
+  font-size: 14px;
+  color: var.$brand-black;
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    left: 0;
+
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+
+    border: 1px solid var.$brand-malachite;
+    border-radius: 3px;
+
+    transition: all .1s ease-in-out .1s;
+  }
+}
+
+.checkbox:hover .checkbox__text {
+
+  &::before {
+    border-color: var.$brand-malachite;
+  }
+}
+
+.checkbox__input:checked + .checkbox__text {
+
+  &::before {
+    content: '';
+
+    border-color: var.$brand-malachite;
+    background-color: var.$brand-malachite;
+  }
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    top: -3px;
+    left: 8px;
+
+    display: block;
+    width: 8px;
+    height: 15px;
+
+    border: 2px solid #ffffff;
+    border-top: transparent;
+    border-left: transparent;
+
+    transform: rotate(45deg);
   }
 }

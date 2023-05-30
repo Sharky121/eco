@@ -7,10 +7,19 @@ import ContactsScreen from "@/components/contacts-screen/contacts-screen";
 import Header from "@/components/header/header";
 import FeedbackScreen from "@/components/feedback-screen/feedback-screen";
 import Footer from "@/components/footer/footer";
+import Head from 'next/head';
 
 export default function Home() {
   return (
       <>
+          <Head>
+              <title>Экопоролон</title>
+              <meta
+                  name="description"
+                  content="Продажа поролона вторичного вспенивания"
+                  key="desc"
+              />
+          </Head>
           <Header />
           <main className="page__main">
               <WelcomeScreen/>
