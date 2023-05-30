@@ -1,4 +1,3 @@
-const cors = require('micro-cors')();
 import nodemailer from 'nodemailer';
 
 // eslint-disable-next-line import/no-anonymous-default-export
