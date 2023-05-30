@@ -1,5 +1,7 @@
+const cors = require('micro-cors')();
 import nodemailer from 'nodemailer';
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
   const body = req.body;
 
@@ -13,6 +15,7 @@ export default async (req, res) => {
       user: process.env.WEB_MAILER,
       pass: process.env.WEB_MAILER_PASSWORD,
     },
+    origin: 'https://xn--j1acgcaabek9j.xn--p1ai/'
   });
 
   const mailOptions = {
