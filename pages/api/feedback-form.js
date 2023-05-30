@@ -10,14 +10,14 @@ export default async (req, res) => {
     port: 465,
     secure: true,
     auth: {
-      user: 'loginov@cherryline.ru',
-      pass: '4xkW7vWpb7zqUhSJeks0',
+      user: process.env.WEB_MAILER,
+      pass: process.env.WEB_MAILER_PASSWORD,
     },
   });
 
   const mailOptions = {
-    from: 'Экопоролон.рф <loginov@cherryline.ru>',
-    to: 'ooo.plastprom@mail.ru, Sharky121@mail.ru',
+    from: `Экопоролон.рф <${process.env.WEB_MAILER}>`,
+    to: process.env.EMAIL_TO,
     subject: 'Письмо с сайта Экопоролон.рф',
     html: `<h2>Вопрос с сайта</h2>
       <p>Имя: ${body.name}</p>
