@@ -14,7 +14,6 @@ export default async (req, res) => {
       user: process.env.WEB_MAILER,
       pass: process.env.WEB_MAILER_PASSWORD,
     },
-    origin: 'https://xn--j1acgcaabek9j.xn--p1ai/'
   });
 
   const mailOptions = {
@@ -27,12 +26,30 @@ export default async (req, res) => {
       <p>Сообщение: ${body.message} </p>`
   };
 
-  try {
-    const info = await transporter.sendMail(mailOptions);
-    console.log('Message sent: %s', info.messageId);
-    res.status(200).json({ message: 'Message sent' });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Error sending message' });
-  }
+  await new Promise((resolve, reject) => {
+    transporter.verify(function (error, success) {
+      if (error) {
+        console.log(error);
+        reject(error);
+      } else {
+        console.log("Server is ready to take our messages");
+        resolve(success);
+      }
+    });
+  });
+
+  await new Promise((resolve, reject) => {
+    // send mail
+    transporter.sendMail(mailOptions, (err, info) => {
+      if (err) {
+        console.error(err);
+        reject(err);
+      } else {
+        console.log(info);
+        resolve(info);
+      }
+    });
+  });
+
+  res.status(200).json({ status: "OK" });
 }
