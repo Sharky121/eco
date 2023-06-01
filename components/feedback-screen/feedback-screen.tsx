@@ -4,9 +4,10 @@ import withReactContent from 'sweetalert2-react-content';
 
 const FeedbackScreen = () => {
     const [name, setName] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
-    const [isChecked, setIsChecked] = useState(true)
+    const [isChecked, setIsChecked] = useState(true);
 
     const MySwal = withReactContent(Swal);
 
@@ -16,6 +17,7 @@ const FeedbackScreen = () => {
 
     const handleSubmit = async (evt: FormEvent<HTMLFormElement>) => {
         evt.preventDefault();
+        setIsLoading(true);
 
         const data = {
             name: name,
@@ -46,6 +48,7 @@ const FeedbackScreen = () => {
                 setName('');
                 setEmail('');
                 setMessage('');
+                setIsLoading(false);
             });
 
     };
@@ -97,7 +100,10 @@ const FeedbackScreen = () => {
                                 <span className="checkbox__text">Согласен с <a href="">условиями обработки</a> персональных данных</span>
                             </label>
                         </div>
-                        <button className="feedback-form__btn btn btn--primary btn--full-width">Отправить</button>
+                        <button className="feedback-form__btn btn btn--primary btn--full-width"
+                                disabled={isLoading}>
+                            {isLoading ? 'Идет отправка' : 'Отправить'}
+                        </button>
                     </div>
                 </form>
             </div>
