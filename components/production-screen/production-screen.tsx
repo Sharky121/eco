@@ -5,8 +5,7 @@ const ProductionScreen = () => (
             <ul className="production-screen__list">
                 <li className="production-screen__item production-item">
                     <h3 className="production-item__title">Вторичный <br/> поролон</h3>
-                    <p className="production-item__description">ПВВ получается не таким однородным, как первичный
-                        поролон, но он прочнее, плотнее, моментально восстанавливает свою форму после ударов и сжатия,
+                    <p className="production-item__description">ПВВ по отношению к первичному поролону получается прочнее, плотнее, моментально восстанавливает свою форму после ударов и сжатия,
                         выдерживает существенные перепады температур — от -25 до +80 градусов.</p>
                 </li>
                 <li className="production-screen__item production-item">
