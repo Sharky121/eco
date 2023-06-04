@@ -1,8 +1,7 @@
 import {FormEvent,useState} from "react";
-import ReCAPTCHA from 'react-google-recaptcha';
 
 const FeedbackScreen = () => {
-    const [isVerified, setIsVerified] = useState(false);
+    const [isVerified, setIsVerified] = useState(true);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
@@ -102,7 +101,6 @@ const FeedbackScreen = () => {
                         </div>
                         <button className="feedback-form__btn btn btn--primary btn--full-width">Отправить</button>
                     </div>
-                    <ReCAPTCHA sitekey="6LfyrmkmAAAAAPHvhpfMWlUR-4O80XTqSC2XiGU5" onChange={handleVerify} />
                 </form>
             </div>
         </section>

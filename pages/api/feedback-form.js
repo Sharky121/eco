@@ -1,20 +1,8 @@
 import nodemailer from 'nodemailer';
-import axios from 'axios';
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default async (req, res, recaptchaToken) => {
+export default async (req, res) => {
   const body = req.body;
-
-  const response = await axios.post(
-      'https://www.google.com/recaptcha/api/siteverify',
-      null,
-      {
-        params: {
-          secret: '6LfyrmkmAAAAAFELSujDC86AP0F8FQ8jSb-pkFSM',
-          response: recaptchaToken,
-        },
-      }
-  );
 
   const transporter = nodemailer.createTransport({
     host: 'smtp.mail.ru',
@@ -54,12 +42,7 @@ export default async (req, res, recaptchaToken) => {
         console.error(err);
         reject(err);
       } else {
-        if (response) {
-          resolve(info);
-        } else {
-          console.error(err);
-          reject(err);
-        }
+        resolve(info);
       }
     });
   });
