@@ -1,14 +1,22 @@
-import {FormEvent, ReactEventHandler, useState} from "react";
+import {FormEvent,useState} from "react";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const FeedbackScreen = () => {
+    const [isVerified, setIsVerified] = useState(false);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
-    const [isChecked, setIsChecked] = useState(true)
+    const [isChecked, setIsChecked] = useState(true);
 
     const MySwal = withReactContent(Swal);
+
+    const handleVerify = (response: any) => {
+        if (response) {
+            setIsVerified(true);
+        }
+    };
 
     const checkHandler = () => {
         setIsChecked(!isChecked)
@@ -17,37 +25,40 @@ const FeedbackScreen = () => {
     const handleSubmit = async (evt: FormEvent<HTMLFormElement>) => {
         evt.preventDefault();
 
-        const data = {
-            name: name,
-            email: email,
-            message: message,
-        };
+        if (isVerified) {
+            const data = {
+                name: name,
+                email: email,
+                message: message,
+            };
 
-        const JSONdata = JSON.stringify(data);
-        const endpoint = '/api/feedback-form';
-        const options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSONdata,
-        };
+            const JSONdata = JSON.stringify(data);
+            const endpoint = '/api/feedback-form';
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSONdata,
+            };
 
-        await fetch(endpoint, options)
-            .then(() => {
-                MySwal.fire({
-                    title: <strong>Сообщение отправлено</strong>,
-                    icon: 'success',
-                    confirmButtonColor: '#00d64b',
+            await fetch(endpoint, options)
+                .then(() => {
+                    MySwal.fire({
+                        title: <strong>Сообщение отправлено</strong>,
+                        icon: 'success',
+                        confirmButtonColor: '#00d64b',
+                    })
                 })
-            })
-            .catch((error) => console.log(error))
-            .finally(() => {
-                setName('');
-                setEmail('');
-                setMessage('');
-            });
-
+                .catch((error) => console.log(error))
+                .finally(() => {
+                    setName('');
+                    setEmail('');
+                    setMessage('');
+                });
+        } else {
+            alert('Подтвердите, что вы не робот');
+        }
     };
 
     return (
@@ -58,7 +69,7 @@ const FeedbackScreen = () => {
                       id="feedback"
                       action="/api/feedback-form"
                       method="post"
-                        onSubmit={handleSubmit}>
+                      onSubmit={handleSubmit}>
                     <ul className="feedback-form__list">
                         <li className="feedback-form__item form-field">
                             <label className="form-field__label visually-hidden" htmlFor="name">Ваше имя</label>
@@ -99,6 +110,7 @@ const FeedbackScreen = () => {
                         </div>
                         <button className="feedback-form__btn btn btn--primary btn--full-width">Отправить</button>
                     </div>
+                    <ReCAPTCHA sitekey="6LfyrmkmAAAAAPHvhpfMWlUR-4O80XTqSC2XiGU5" onChange={handleVerify} />
                 </form>
             </div>
         </section>
