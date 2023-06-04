@@ -39,7 +39,7 @@ const FeedbackScreen = () => {
 
             await fetch(endpoint, options)
                 .then(() => {
-                    alert('Отправлено');
+                    alert('Сообщение успешно отправлено');
                 })
                 .catch((error) => console.log(error))
                 .finally(() => {
