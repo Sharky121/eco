@@ -14,7 +14,7 @@ const ContactsScreen = () => (
                 <li className="contacts-screen__item contacts-screen-item">
                     <h3 className="contacts-screen-item__title">Email:</h3>
                     <a className="contacts-screen-item__phone"
-                       href="mailto:ooo.plastrom@mail.ru">ooo.plastrom@mail.ru</a>
+                       href="mailto:ooo.plastprom@mail.ru">ooo.plastprom@mail.ru</a>
                 </li>
             </ul>
         </div>

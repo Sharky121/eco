@@ -1,0 +1,47 @@
+@use "../abstract" as var;
+
+.about-photo__list {
+  @extend %list-reset;
+}
+
+.about-photo__item {
+  position: relative;
+
+  height: 300px;
+  margin-bottom: 10px;
+
+  overflow: hidden;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.about-photo__img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+@include var.tablet-size {
+
+  .about-photo__list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .about-photo__item {
+    width: calc((100% - 20px) / 2);
+    margin-bottom: 0;
+  }
+}
+
+@include var.desktop-size {
+
+  .about-photo__item {
+    width: calc((100% - 20px * 2) / 3);
+  }
+}

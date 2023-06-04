@@ -40,3 +40,10 @@
     background-color: transparent;
   }
 }
+
+.btn:disabled {
+  pointer-events: none;
+
+  background-color: var.$brand-silver;
+  border-color: var.$brand-silver;
+}
