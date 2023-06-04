@@ -41,7 +41,7 @@ const FeedbackScreen = () => {
 
             await fetch(endpoint, options)
                 .then(() => {
-                    console.log('Success');
+
                 })
                 .catch((error) => console.log(error))
                 .finally(() => {
