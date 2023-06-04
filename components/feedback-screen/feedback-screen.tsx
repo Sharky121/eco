@@ -1,6 +1,5 @@
 import {FormEvent,useState} from "react";
 import ReCAPTCHA from 'react-google-recaptcha';
-import * as console from "console";
 
 const FeedbackScreen = () => {
     const [isVerified, setIsVerified] = useState(false);
@@ -41,7 +40,7 @@ const FeedbackScreen = () => {
 
             await fetch(endpoint, options)
                 .then(() => {
-
+                    alert('Отправлено');
                 })
                 .catch((error) => console.log(error))
                 .finally(() => {
