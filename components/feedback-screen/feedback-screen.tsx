@@ -1,7 +1,6 @@
 import {FormEvent,useState} from "react";
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
 import ReCAPTCHA from 'react-google-recaptcha';
+import * as console from "console";
 
 const FeedbackScreen = () => {
     const [isVerified, setIsVerified] = useState(false);
@@ -9,8 +8,6 @@ const FeedbackScreen = () => {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     const [isChecked, setIsChecked] = useState(true);
-
-    const MySwal = withReactContent(Swal);
 
     const handleVerify = (response: any) => {
         if (response) {
@@ -44,11 +41,7 @@ const FeedbackScreen = () => {
 
             await fetch(endpoint, options)
                 .then(() => {
-                    MySwal.fire({
-                        title: <strong>Сообщение отправлено</strong>,
-                        icon: 'success',
-                        confirmButtonColor: '#00d64b',
-                    })
+                    console.log('Success');
                 })
                 .catch((error) => console.log(error))
                 .finally(() => {
