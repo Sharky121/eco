@@ -14,46 +14,45 @@ const FeedbackScreen = () => {
         setIsChecked(!isChecked)
     }
 
-    const handleSubmit = useCallback((evt: FormEvent<HTMLFormElement>) => {
-            evt.preventDefault();
+    // const handleSubmit = useCallback((evt: FormEvent<HTMLFormElement>) => {
+    //         evt.preventDefault();
+    //
+    //
+    //     },
+    //     [executeRecaptcha]
+    // );
 
-            if (!executeRecaptcha) {
-                console.log("Execute recaptcha not yet available");
-                return;
-            }
+    const handleSubmit = () => {
+        if (!executeRecaptcha) {
+            console.log("Execute recaptcha not yet available");
+            return;
+        }
 
-            executeRecaptcha("enquiryFormSubmit").then((gReCaptchaToken) => {
-                console.log(gReCaptchaToken, "response Google reCaptcha server");
-                submitEnquiryForm(gReCaptchaToken);
-            });
-        },
-        [executeRecaptcha]
-    );
-
-    const submitEnquiryForm = (gReCaptchaToken: string) => {
-        console.log(name);
-        fetch("/api/feedback-form", {
-            method: "POST",
-            headers: {
-                Accept: "application/json, text/plain, */*",
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                name: name,
-                email: email,
-                message: message,
-                gRecaptchaToken: gReCaptchaToken,
-            }),
-        })
-            .then((res) => res.json())
-            .then((res) => {
-                console.log(res, "response from backend");
-                if (res?.status === "success") {
-                    setNotification(res?.message);
-                } else {
-                    setNotification(res?.message);
-                }
-            });
+        executeRecaptcha("enquiryFormSubmit").then((gReCaptchaToken) => {
+            console.log(gReCaptchaToken, "response Google reCaptcha server");
+            fetch("/api/feedback-form", {
+                method: "POST",
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    message: message,
+                    gRecaptchaToken: gReCaptchaToken,
+                }),
+            })
+                .then((res) => res.json())
+                .then((res) => {
+                    console.log(res, "response from backend");
+                    if (res?.status === "success") {
+                        setNotification(res?.message);
+                    } else {
+                        setNotification(res?.message);
+                    }
+                });
+        });
     };
 
     return (
