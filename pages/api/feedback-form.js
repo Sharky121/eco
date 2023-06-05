@@ -1,4 +1,28 @@
-const handler = (req, res) => {
+import nodemailer from 'nodemailer';
+
+export default (req, res) => {
+  const body = req.body;
+
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.mail.ru',
+    port: 465,
+    secure: true,
+    auth: {
+      user: process.env.WEB_MAILER,
+      pass: process.env.WEB_MAILER_PASSWORD,
+    },
+  });
+
+  const mailOptions = {
+    from: `Экопоролон.рф <${process.env.WEB_MAILER}>`,
+    to: process.env.EMAIL_TO,
+    subject: 'Письмо с сайта Экопоролон.рф',
+    html: `<h2>Вопрос с сайта</h2>
+      <p>Имя: ${body.name}</p>
+      <p>Email: ${body.email} </p>
+      <p>Сообщение: ${body.message} </p>`
+  };
+
   if (req.method === "POST") {
     try {
       fetch("https://www.google.com/recaptcha/api/siteverify", {
@@ -16,6 +40,21 @@ const handler = (req, res) => {
             );
             if (reCaptchaRes?.score > 0.5) {
               // Save data to the database from here
+              transporter.verify(function (error, success) {
+                if (error) {
+                  console.log(error);
+                } else {
+                  console.log("Server is ready to take our messages");
+                }
+              });
+
+              transporter.sendMail(mailOptions, (err, info) => {
+                if (err) {
+                  console.error(err);
+                } else {
+                }
+              });
+
               res.status(200).json({
                 status: "success",
                 message: "Enquiry submitted successfully",
@@ -38,5 +77,3 @@ const handler = (req, res) => {
     res.end();
   }
 };
-
-export default handler;
