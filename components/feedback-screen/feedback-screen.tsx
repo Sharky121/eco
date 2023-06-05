@@ -52,7 +52,11 @@ const FeedbackScreen = () => {
                 } else {
                     setNotification(res?.message);
                 }
-            });
+            }).finally(() => {
+            setName('');
+            setEmail('');
+            setMessage('');
+        });
     };
 
     return (
@@ -104,8 +108,8 @@ const FeedbackScreen = () => {
                         </div>
                         <button className="feedback-form__btn btn btn--primary btn--full-width">Отправить</button>
                     </div>
-                    {notification && <p>{notification}</p>}
                 </form>
+                {notification && <p>{notification}</p>}
             </div>
         </section>
     );

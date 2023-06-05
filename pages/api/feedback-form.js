@@ -46,7 +46,7 @@ export default (req, res) => {
                 } else {
                   res.status(200).json({
                     status: "success",
-                    message: "mail send",
+                    message: "Письмо отправлено",
                   });
                 }
               });
