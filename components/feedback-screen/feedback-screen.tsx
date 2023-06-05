@@ -31,6 +31,7 @@ const FeedbackScreen = () => {
     );
 
     const submitEnquiryForm = (gReCaptchaToken: string) => {
+        console.log(name);
         fetch("/api/feedback-form", {
             method: "POST",
             headers: {

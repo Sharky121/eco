@@ -1,17 +1,8 @@
 import nodemailer from 'nodemailer';
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default (req, res) => {
   const body = req.body;
-
-  const mailOptions = {
-    from: `Экопоролон.рф <${process.env.WEB_MAILER}>`,
-    to: process.env.EMAIL_TO,
-    subject: 'Письмо с сайта Экопоролон.рф',
-    html: `<h2>Вопрос с сайта</h2>
-      <p>Имя: ${body.name}</p>
-      <p>Email: ${body.email} </p>
-      <p>Сообщение: ${body.message} </p>`
-  };
 
   if (req.method === "POST") {
     try {
@@ -29,6 +20,16 @@ export default (req, res) => {
                 "Response from Google reCaptcha verification API"
             );
             if (reCaptchaRes?.score > 0.5) {
+              const mailOptions = {
+                from: `Экопоролон.рф <${process.env.WEB_MAILER}>`,
+                to: process.env.EMAIL_TO,
+                subject: 'Письмо с сайта Экопоролон.рф',
+                html: `<h2>Вопрос с сайта</h2>
+                  <p>Имя: ${body.name}</p>
+                  <p>Email: ${body.email} </p>
+                  <p>Сообщение: ${body.message} </p>`
+              };
+
               const transporter = nodemailer.createTransport({
                 host: 'smtp.mail.ru',
                 port: 465,
