@@ -1,55 +1,58 @@
-import {FormEvent,useState} from "react";
+import {FormEvent, useCallback, useState} from "react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 const FeedbackScreen = () => {
-    const [isVerified, setIsVerified] = useState(true);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     const [isChecked, setIsChecked] = useState(true);
+    const [notification, setNotification] = useState("");
 
-    const handleVerify = (response: any) => {
-        if (response) {
-            setIsVerified(true);
-        }
-    };
+    const { executeRecaptcha } = useGoogleReCaptcha();
 
     const checkHandler = () => {
         setIsChecked(!isChecked)
     }
 
-    const handleSubmit = async (evt: FormEvent<HTMLFormElement>) => {
-        evt.preventDefault();
+    const handleSubmit = useCallback((evt: FormEvent<HTMLFormElement>) => {
+            evt.preventDefault();
 
-        if (isVerified) {
-            const data = {
+            if (!executeRecaptcha) {
+                console.log("Execute recaptcha not yet available");
+                return;
+            }
+
+            executeRecaptcha("enquiryFormSubmit").then((gReCaptchaToken) => {
+                console.log(gReCaptchaToken, "response Google reCaptcha server");
+                submitEnquiryForm(gReCaptchaToken);
+            });
+        },
+        [executeRecaptcha]
+    );
+
+    const submitEnquiryForm = (gReCaptchaToken: string) => {
+        fetch("/api/feedback-form", {
+            method: "POST",
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
                 name: name,
                 email: email,
                 message: message,
-            };
-
-            const JSONdata = JSON.stringify(data);
-            const endpoint = '/api/feedback-form';
-            const options = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSONdata,
-            };
-
-            await fetch(endpoint, options)
-                .then(() => {
-                    alert('Сообщение успешно отправлено');
-                })
-                .catch((error) => console.log(error))
-                .finally(() => {
-                    setName('');
-                    setEmail('');
-                    setMessage('');
-                });
-        } else {
-            alert('Подтвердите, что вы не робот');
-        }
+                gRecaptchaToken: gReCaptchaToken,
+            }),
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                console.log(res, "response from backend");
+                if (res?.status === "success") {
+                    setNotification(res?.message);
+                } else {
+                    setNotification(res?.message);
+                }
+            });
     };
 
     return (
@@ -101,6 +104,7 @@ const FeedbackScreen = () => {
                         </div>
                         <button className="feedback-form__btn btn btn--primary btn--full-width">Отправить</button>
                     </div>
+                    {notification && <p>{notification}</p>}
                 </form>
             </div>
         </section>
