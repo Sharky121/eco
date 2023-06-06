@@ -114,7 +114,7 @@ const FeedbackScreen = () => {
                                     <span className="checkbox__text">Согласен с <a href="">условиями обработки</a> персональных данных</span>
                                 </label>
                             </div>
-                            <button className="feedback-form__btn btn btn--primary btn--full-width" disabled={!isLoading}>
+                            <button className="feedback-form__btn btn btn--primary btn--full-width" disabled={isLoading}>
                                 {isLoading ? 'Письмо отправляется' : 'Отправить'}
                             </button>
                         </div>
