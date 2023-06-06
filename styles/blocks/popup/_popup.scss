@@ -1,0 +1,152 @@
+@use '../../abstract' as var;
+
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  padding: 36px;
+
+  z-index: 3;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+
+.popup {
+  width: 470px;
+
+  background-color: var.$brand-white;
+  border-radius: 16px;
+
+  z-index: 2;
+}
+
+.popup__icon {
+  position: absolute;
+  top: -36px;
+  right: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  height: 64px;
+  margin-right: -32px;
+
+  color: var.$brand-malachite;
+
+  border-radius: 50%;
+  background-color: var.$brand-white;
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.popup__content {
+  position: relative;
+}
+
+.popup__close {
+  @extend %btn-reset;
+
+  position: absolute;
+  top: -36px;
+  right: -36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+
+  color: var.$brand-white;
+
+  border-radius: 8px;
+  background-color: rgba(var.$brand-white, 0.5);
+
+  svg {
+    transition: transform 0.45s ease-out;
+  }
+
+  &:hover {
+    color: var.$brand-malachite;
+
+    background-color: var.$brand-malachite;
+
+    svg {
+      transform: rotate(90deg);
+      transition: transform 0.45s ease-out;
+    }
+  }
+}
+
+.popup__header {
+  padding: 20px;
+}
+
+.popup__title {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.popup__subtitle {
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
+.popup__body {
+  padding: 20px;
+
+  p:first-of-type {
+    margin-top: 0;
+  }
+
+  p:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.popup__footer {
+  padding: 20px;
+}
+
+// MODIFICATORS
+
+.popup--large {
+  width: 750px;
+}
+
+.popup--is-auth {
+  width: 440px;
+
+  text-align: center;
+}
+
+.popup--is-auth .popup__header {
+  padding-top: 40px;
+}
+
+.popup--is-auth .popup__body {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.popup__title--primary {
+  color: var.$brand-malachite;
+}
