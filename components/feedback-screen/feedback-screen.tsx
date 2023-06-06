@@ -7,7 +7,6 @@ const FeedbackScreen = () => {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     const [isChecked, setIsChecked] = useState(true);
-    const [notification, setNotification] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [successModalIsOpen, setSuccessModalIsOpen] = useState<boolean>(false);
 
@@ -32,7 +31,6 @@ const FeedbackScreen = () => {
     );
 
     const submitEnquiryForm = (gReCaptchaToken: string) => {
-        setNotification('');
         setIsLoading(true);
 
         fetch("/api/feedback-form", {
@@ -51,12 +49,6 @@ const FeedbackScreen = () => {
             .then((res) => res.json())
             .then((res) => {
                 setSuccessModalIsOpen(true);
-
-                if (res?.status === "success") {
-                    setNotification(res?.message);
-                } else {
-                    setNotification(res?.message);
-                }
             })
             .finally(() => {
             setIsLoading(false);
@@ -119,7 +111,6 @@ const FeedbackScreen = () => {
                             </button>
                         </div>
                     </form>
-                    {notification && <p>{notification}</p>}
                 </div>
             </section>
             {successModalIsOpen && (

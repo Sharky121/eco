@@ -23,10 +23,7 @@ const SuccessPopup = ({isOpened, text, onClose}: SuccessPopupProps) => {
                         <span className="visually-hidden">Закрыть модальное окно</span>
                     </button>
                     <div className="popup__header">
-                        <h3 className="popup__title">Иконка успеха</h3>
-                    </div>
-                    <div className="popup__body">
-                        <p>{text}</p>
+                        <h3 className="popup__title">Ваще сообщение отправлено</h3>
                     </div>
                     <div className="popup__footer">
                         <button className="btn btn--primary" type="button" onClick={() => onClose(false)}>Хорошо</button>
