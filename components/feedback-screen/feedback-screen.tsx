@@ -6,6 +6,7 @@ const FeedbackScreen = () => {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     const [isChecked, setIsChecked] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleVerify = (response: any) => {
         if (response) {
@@ -19,6 +20,8 @@ const FeedbackScreen = () => {
 
     const handleSubmit = async (evt: FormEvent<HTMLFormElement>) => {
         evt.preventDefault();
+
+        setIsLoading(true);
 
         if (isVerified) {
             const data = {
