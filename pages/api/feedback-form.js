@@ -22,7 +22,7 @@ export default (req, res) => {
             if (reCaptchaRes?.score > 0.5) {
               const mailOptions = {
                 from: `Экопоролон.рф <${process.env.WEB_MAILER}>`,
-                to: process.env.EMAIL_TO,
+                to: process.env.EMAIL_TO.split(','),
                 subject: 'Письмо с сайта Экопоролон.рф',
                 html: `<h2>Вопрос с сайта</h2>
                   <p>Имя: ${body.name}</p>
