@@ -44,8 +44,9 @@ export default (req, res) => {
                 if (err) {
                   console.error(err);
                 } else {
-                  console.log(mailOptions);
+
                   res.status(200).json({
+                    mail: mailOptions.to,
                     status: "success",
                     message: "Поздравляем. Ваше письмо успешно отправлено!",
                   });
