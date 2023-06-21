@@ -22,3 +22,4 @@ const ContactsScreen = () => (
 );
 
 export default ContactsScreen;
+
