@@ -29,7 +29,7 @@ export default (req, res) => {
                   <p>Email: ${body.email} </p>
                   <p>Сообщение: ${body.message} </p>`
               };
-              console.log(mailOptions);
+
               const transporter = nodemailer.createTransport({
                 host: 'smtp.mail.ru',
                 port: 465,
@@ -44,9 +44,7 @@ export default (req, res) => {
                 if (err) {
                   console.error(err);
                 } else {
-
                   res.status(200).json({
-                    mail: mailOptions.to,
                     status: "success",
                     message: "Поздравляем. Ваше письмо успешно отправлено!",
                   });

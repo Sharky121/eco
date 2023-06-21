@@ -4,6 +4,7 @@ import {products} from "@/data";
 import Header from "@/components/header/header";
 import FeedbackScreen from "@/components/feedback-screen/feedback-screen";
 import Footer from "@/components/footer/footer";
+import Head from "next/head";
 
 type Product = {
     id: number;
@@ -19,6 +20,18 @@ type productsProps = {
 const Products = () => {
     return (
         <>
+            <Head>
+                <title>Экопоролон | Наша продукция</title>
+                <meta name="robots" content="noindex,nofollow" />
+                <meta name="googlebot" content="noindex,nofollow" />
+                <meta name="google" content="nositelinkssearchbox" key="sitelinks"/>
+                <meta name="google" content="notranslate" />
+                <meta
+                    name="description"
+                    content="Наша продукция. Поролон малой, средней и высокой плотности."
+                    key="desc"
+                />
+            </Head>
             <Header headerStyle="page-header--white"/>
             <main className="page__main">
                 <div className="container">

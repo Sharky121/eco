@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Head from 'next/head';
 import Header from "@/components/header/header";
 import FeedbackScreen from "@/components/feedback-screen/feedback-screen";
 import Footer from "@/components/footer/footer";
@@ -8,6 +9,18 @@ import {photosAbout} from "@/data";
 
 const About = () => (
     <>
+        <Head>
+            <title>Экопоролон | О компании</title>
+            <meta name="robots" content="noindex,nofollow" />
+            <meta name="googlebot" content="noindex,nofollow" />
+            <meta name="google" content="nositelinkssearchbox" key="sitelinks"/>
+            <meta name="google" content="notranslate" />
+            <meta
+                name="description"
+                content="Компания экопоролон"
+                key="desc"
+            />
+        </Head>
         <Header headerStyle="page-header--white" />
         <main className="page__main">
             <div className="container">

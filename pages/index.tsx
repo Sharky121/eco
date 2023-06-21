@@ -14,6 +14,10 @@ export default function Home() {
       <>
           <Head>
               <title>Экопоролон</title>
+              <meta name="robots" content="noindex,nofollow" />
+              <meta name="googlebot" content="noindex,nofollow" />
+              <meta name="google" content="nositelinkssearchbox" key="sitelinks"/>
+              <meta name="google" content="notranslate" />
               <meta
                   name="description"
                   content="Продажа поролона вторичного вспенивания"
