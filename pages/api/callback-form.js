@@ -24,8 +24,9 @@ export default (req, res) => {
               from: `Экопоролон.рф <${process.env.WEB_MAILER}>`,
               to: process.env.EMAIL_TO.split(','),
               subject: 'Заказ обратного звонка с сайта Экопоролон.рф',
-              html: `<h2>Вопрос с сайта</h2>
-                  <p>Имя: ${body.phone}</p>`
+              html: `<h2>Перезвоните мне</h2>
+                  <p>Имя: ${body.name}</p>
+                  <p>Телефон: ${body.phone}</p>`
             };
 
             const transporter = nodemailer.createTransport({

@@ -1,4 +1,4 @@
-import React, {FormEvent, useCallback, useState} from 'react';
+import React, {FormEvent, useCallback, useId, useState} from 'react';
 import OverlayingPopup from "@/components/overlaying-popup/overlaying-popup";
 import {useGoogleReCaptcha} from 'react-google-recaptcha-v3';
 
@@ -8,6 +8,10 @@ type CallbackPopupType = {
 }
 
 const CallbackPopup = ({isOpened, onClose}: CallbackPopupType) => {
+    const formId = useId();
+    const phoneId = useId();
+    const nameId = useId();
+    const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const { executeRecaptcha } = useGoogleReCaptcha();
 
@@ -33,6 +37,7 @@ const CallbackPopup = ({isOpened, onClose}: CallbackPopupType) => {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
+                name: name,
                 phone: phone,
                 gRecaptchaToken: gReCaptchaToken,
             }),
@@ -64,13 +69,27 @@ const CallbackPopup = ({isOpened, onClose}: CallbackPopupType) => {
                         <h3 className="popup__title">Заказать обратный звонок</h3>
                     </div>
                     <div className="popup__body">
-                        <form action="" onSubmit={handleSubmit}>
-                            <input type="text" name="phone" onChange={(evt) => setPhone(evt.target.value) }/>
-                            <button className="btn btn--primary" type="submit">Отправить</button>
+                        <form className="callback-form" action="" onSubmit={handleSubmit} id={formId}>
+                            <ul className="callback-form__list">
+                                <li className="callback-form__field">
+                                    <label className="callback-form__label" htmlFor={nameId}>Ваше имя</label>
+                                    <input id={nameId} className="callback-form__input"
+                                           type="text"
+                                           name="name"
+                                           onChange={(evt) => setName(evt.target.value) }/>
+                                </li>
+                                <li className="callback-form__field">
+                                    <label className="callback-form__label" htmlFor={phoneId}>Ваш номер телефона</label>
+                                    <input id={phoneId} className="callback-form__input"
+                                           type="text"
+                                           name="phone"
+                                           onChange={(evt) => setPhone(evt.target.value) }/>
+                                </li>
+                            </ul>
                         </form>
                     </div>
                     <div className="popup__footer">
-
+                        <button className="btn btn--primary" form={formId} type="submit">Отправить</button>
                     </div>
                 </div>
             </div>
