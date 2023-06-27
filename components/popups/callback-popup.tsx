@@ -97,11 +97,13 @@ const CallbackPopup = ({isOpened, onClose}: CallbackPopupType) => {
                             )
                         }
                     </div>
-                    <div className="popup__footer">
-                        <button className="btn btn--primary" form={formId} type="submit" disabled={isLoading}>
-                            {isLoading ? 'Письмо отправляется' : 'Отправить'}
-                        </button>
-                    </div>
+                    {!successSubmit && (
+                        <div className="popup__footer">
+                            <button className="btn btn--primary" form={formId} type="submit" disabled={isLoading}>
+                                {isLoading ? 'Письмо отправляется' : 'Отправить'}
+                            </button>
+                        </div>
+                    )}
                 </div>
             </div>
         </OverlayingPopup>
