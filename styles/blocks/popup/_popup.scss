@@ -115,7 +115,9 @@
 .popup__body {
   padding: 20px;
 
-  text-align: center;
+  p {
+    text-align: center;
+  }
 
   p:first-of-type {
     margin-top: 0;
