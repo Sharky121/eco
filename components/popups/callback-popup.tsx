@@ -13,6 +13,8 @@ const CallbackPopup = ({isOpened, onClose}: CallbackPopupType) => {
     const nameId = useId();
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+    const [successSubmit, setSuccessSubmit,] = useState<boolean>(false);
     const { executeRecaptcha } = useGoogleReCaptcha();
 
     const handleSubmit = useCallback((evt: FormEvent<HTMLFormElement>) => {
@@ -44,10 +46,14 @@ const CallbackPopup = ({isOpened, onClose}: CallbackPopupType) => {
         })
             .then((res) => res.json())
             .then((res) => {
-                console.log(res);
+                setSuccessSubmit(true);
             })
             .finally(() => {
-
+                setIsLoading(false);
+                setName('');
+                setPhone('');
+                onClose(false);
+                setSuccessSubmit(false);
             });
     };
 
@@ -69,27 +75,34 @@ const CallbackPopup = ({isOpened, onClose}: CallbackPopupType) => {
                         <h3 className="popup__title">Заказать обратный звонок</h3>
                     </div>
                     <div className="popup__body">
-                        <form className="callback-form" action="" onSubmit={handleSubmit} id={formId}>
-                            <ul className="callback-form__list">
-                                <li className="callback-form__field">
-                                    <label className="callback-form__label" htmlFor={nameId}>Ваше имя</label>
-                                    <input id={nameId} className="callback-form__input"
-                                           type="text"
-                                           name="name"
-                                           onChange={(evt) => setName(evt.target.value) }/>
-                                </li>
-                                <li className="callback-form__field">
-                                    <label className="callback-form__label" htmlFor={phoneId}>Ваш номер телефона</label>
-                                    <input id={phoneId} className="callback-form__input"
-                                           type="text"
-                                           name="phone"
-                                           onChange={(evt) => setPhone(evt.target.value) }/>
-                                </li>
-                            </ul>
-                        </form>
+                        {successSubmit
+                            ? (<p>Спасибо! Мы вас перезвоним</p>)
+                            : (
+                                <form className="callback-form" action="" onSubmit={handleSubmit} id={formId}>
+                                <ul className="callback-form__list">
+                                    <li className="callback-form__field">
+                                        <label className="callback-form__label" htmlFor={nameId}>Ваше имя</label>
+                                        <input id={nameId} className="callback-form__input"
+                                               type="text"
+                                               name="name"
+                                               onChange={(evt) => setName(evt.target.value) }/>
+                                    </li>
+                                    <li className="callback-form__field">
+                                        <label className="callback-form__label" htmlFor={phoneId}>Ваш номер телефона</label>
+                                        <input id={phoneId} className="callback-form__input"
+                                               type="text"
+                                               name="phone"
+                                               onChange={(evt) => setPhone(evt.target.value) }/>
+                                    </li>
+                                </ul>
+                            </form>
+                            )
+                        }
                     </div>
                     <div className="popup__footer">
-                        <button className="btn btn--primary" form={formId} type="submit">Отправить</button>
+                        <button className="btn btn--primary" form={formId} type="submit" disabled={isLoading}>
+                            {isLoading ? 'Письмо отправляется' : 'Отправить'}
+                        </button>
                     </div>
                 </div>
             </div>
