@@ -52,7 +52,6 @@ const CallbackPopup = ({isOpened, onClose}: CallbackPopupType) => {
             })
             .finally(() => {
                 setIsLoading(false);
-                setSuccessSubmit(false);
             });
     };
 
