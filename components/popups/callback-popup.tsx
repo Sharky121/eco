@@ -32,6 +32,8 @@ const CallbackPopup = ({isOpened, onClose}: CallbackPopupType) => {
     );
 
     const submitEnquiryForm = (gReCaptchaToken: string) => {
+        setIsLoading(true);
+
         fetch("/api/callback-form", {
             method: "POST",
             headers: {
