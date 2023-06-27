@@ -52,8 +52,6 @@ const CallbackPopup = ({isOpened, onClose}: CallbackPopupType) => {
             })
             .finally(() => {
                 setIsLoading(false);
-                setName('');
-                setPhone('');
                 setSuccessSubmit(false);
             });
     };
